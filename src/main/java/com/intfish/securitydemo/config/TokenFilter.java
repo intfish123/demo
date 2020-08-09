@@ -28,6 +28,7 @@ public class TokenFilter  extends OncePerRequestFilter {
         }
         if(StringUtils.isEmpty(token)){
             System.out.println("token 为空");
+            SecurityContextHolder.getContext().setAuthentication(null);
         }else{
             User user = new User();
             user.setUid("1");
