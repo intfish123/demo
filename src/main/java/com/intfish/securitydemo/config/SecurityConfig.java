@@ -30,7 +30,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public void configure(HttpSecurity http) throws Exception {
         http.cors()
                 .and().csrf().disable()
-                .formLogin()
+                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+                .and().formLogin()
                 .failureHandler((req, res, e) -> {
                     res.setContentType("application/json;charset=utf-8");
                     PrintWriter writer = res.getWriter();
